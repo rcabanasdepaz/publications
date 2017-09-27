@@ -8,6 +8,8 @@
 *.nav
 *.out
 *.snm
+*-blx.bib
+*.run.xml
 *.toc
 
 # Other noise
