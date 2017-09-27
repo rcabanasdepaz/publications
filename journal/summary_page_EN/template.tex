@@ -87,12 +87,36 @@
 
 	\vspace{10mm}
 	
-	\includepdf[pages=\includedPages
-	%, fitpaper=true
-	%,pagecommand={}
-	,width=\pdfwidth
-	%scale=1
-	]{\paperfile}
+	\ifx\includedPages\undefined
+	%undefined
+	\else
+	\if\includedPages-
+
+		\includepdf[
+		pages=-
+		%, fitpaper=true
+		%,pagecommand={}
+		,width=\pdfwidth
+		%scale=1
+		]{\paperfile}
+
+
+
+	\else
+	
+		\includepdf[
+		pages=\includedPages
+		%, fitpaper=true
+		%,pagecommand={}
+		,width=\pdfwidth
+		%scale=1
+		]{\paperfile}
+	
+	
+	\fi
+	\fi
+	
+
 	
 
 	
