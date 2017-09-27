@@ -1,0 +1,17 @@
+
+# latex noise
+*.synctex.gz
+*.log
+*.aux
+*.bbl
+*.blg
+*.nav
+*.out
+*.snm
+*.toc
+
+# Other noise
+*~
+*.bak
+*.el
+
