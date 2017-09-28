@@ -1,0 +1,134 @@
+
+
+%\usepackage{ucs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=3.00cm, right=3.00cm, top=2.50cm, bottom=2.50cm]{geometry}
+
+
+
+\usepackage[backend=bibtex,maxnames=8, citestyle=alphabetic,bibstyle=authortitle]{biblatex}
+\usepackage{usebib}
+
+\newbibfield{location}
+
+
+% \usepackage{biblatex}
+%\bibliographystyle{unsrt}
+\bibliography{\bibfile}
+\bibinput{\bibfile}
+
+
+
+% fancy tables 
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{colortbl}
+\tcbuselibrary{skins}
+
+
+%% pdf 
+\usepackage[final]{pdfpages}
+
+
+\definecolor{customColor}{HTML}{6D99C2}
+
+
+\tcbset{tab2/.style={enhanced,fonttitle=\bfseries\sffamily,fontupper=\normalsize\sffamily,
+		colback=customColor!40!white,
+		colframe=black!50!black,
+		colbacktitle=customColor,
+		coltitle=black,center title}}
+
+
+\begin{document}
+	
+
+	\thispagestyle{empty}
+	
+	 
+	
+	\noindent
+	\sffamily 
+	\Large{ {\textbf{  \titleDoc}}}\normalsize
+
+	\vspace{20mm}
+\begin{tcolorbox}[tab2,tabularx={l||p{0.85\linewidth}}, title=\article, boxrule=0.5pt]
+
+	 \textbf{\titlePaper} & \citefield{\bibkey}{title} \\
+	  \textbf{\authors} & \citename{\bibkey}{author} \\
+	  \textbf{\publicationYear} & \citefield{\bibkey}{year} \\
+	  	\if\withdoi1 \textbf{\doi} & \citefield{\bibkey}{doi} \\ \fi
+\end{tcolorbox}
+
+	  	
+	  	\vspace{10mm}
+
+\def\citeSeries{\usebibentry{\bibkey}{series}}
+
+\begin{tcolorbox}[tab2,tabularx={l||p{0.80\linewidth}}, title=\journalInfo,boxrule=0.5pt]
+	\textbf{\bookTitle} & \citefield{\bibkey}{booktitle} \\
+	
+	
+	\if\incollection1	\textbf{\series} & \citefield{\bibkey}{series} \\ 
+	\textbf{\volume} & \citefield{\bibkey}{volume} \\ \fi
+		\textbf{\location } & \usebibentry{\bibkey}{location} \\
+\end{tcolorbox}
+
+
+
+
+
+%	\ifx\citeSeries\undefined
+%	undefined
+%	\else
+%	\if\citeSeries-
+%	si
+%	\else
+%	series
+%	\citeSeries
+%	\fi
+%	\fi
+
+	\vspace{10mm}
+	
+	\ifx\includedPages\undefined
+	%undefined
+	\else
+	\if\includedPages-
+
+		\includepdf[
+		pages=-
+		%, fitpaper=true
+		%,pagecommand={}
+		,width=\pdfwidth
+		%scale=1
+		]{\paperfile}
+
+
+
+	\else
+	
+		\includepdf[
+		pages=\includedPages
+		%, fitpaper=true
+		%,pagecommand={}
+		,width=\pdfwidth
+		%scale=1
+		]{\paperfile}
+	
+	
+	\fi
+	\fi
+	
+
+	
+
+	
+	
+\end{document}
